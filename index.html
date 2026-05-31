@@ -1,320 +1,622 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Secpo - En construcción</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secpo SpA | Tecnología y Ciberseguridad</title>
+  <meta name="description" content="Servicios de tecnología, soporte TI, desarrollo web, automatización y ciberseguridad para pequeñas y medianas organizaciones." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --card: #1e293b;
+      --white: #ffffff;
+      --border: #334155;
+    }
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> 
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 6rem 0 5rem;
+      background:
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.20), transparent 35%),
+        linear-gradient(180deg, #0f172a 0%, #111827 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      margin-bottom: 1.3rem;
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 680px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #082f49;
+    }
+
+    .btn-primary:hover {
+      background: #7dd3fc;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: rgba(30, 41, 59, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero-card h2 {
+      color: var(--white);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      color: var(--muted);
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title span {
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      margin-top: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0.8rem auto 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.6rem;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.65);
+    }
+
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(56, 189, 248, 0.14);
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .about {
+      background: var(--bg-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about h2 {
+      color: var(--white);
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .values {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .value {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.2rem;
+    }
+
+    .value strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .value span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .process {
+      counter-reset: step;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #082f49;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--primary-dark), #0f172a);
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      color: #e0f2fe;
+      max-width: 760px;
+      margin: 0 auto 2rem;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .contact-box h3 {
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-box p,
+    .contact-box li {
+      color: var(--muted);
+    }
+
+    .contact-box ul {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 4rem 0;
+      }
+    }
+  </style>
 </head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Navbar Start -->
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
-            <h1 class="m-0 display-5">secpo.cl</h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
-            <div class="navbar-nav m-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Inicio</a>
-                <a href="#about" class="nav-item nav-link">Acerca de</a>
-                <a href="#qualification" class="nav-item nav-link">Experiencia</a>
-                <a href="#service" class="nav-item nav-link">Servicios</a>
-                <a href="#portfolio" class="nav-item nav-link">Galería</a>
-            </div>
-            <a href="" class="btn btn-outline-primary d-none d-lg-block">Volver</a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-
-    <!-- Video Modal Start -->
-    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>        
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo">Secpo<span>SpA</span></a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#metodo">Método</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
     </div>
-    <!-- Video Modal End -->
+  </header>
 
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.jpg" alt="" style="border: 5px solid red;">
-                </div>
-                <div class="col-lg-7 text-center text-lg-left">
-                    <h3 class="text-white font-weight-normal mb-3">Somos</h3>
-                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">SecPo.cl</h1>
-                    <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
-                    <div class="typed-text d-none">Pentesting, Recuperación de datos, Consultorías, Y otros...</div>
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                    </div>
-                </div>
-            </div>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Tecnología · Seguridad · Continuidad</span>
+          <h1>Soluciones TI seguras para organizaciones que necesitan avanzar con confianza.</h1>
+          <p>
+            Acompañamos a pequeñas y medianas empresas en la mejora de su infraestructura tecnológica,
+            soporte informático, automatización de procesos y fortalecimiento de su seguridad digital.
+          </p>
+          <div class="actions">
+            <a href="#contacto" class="btn btn-primary">Solicitar contacto</a>
+            <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+          </div>
         </div>
-    </div>
-    <!-- Header End -->
 
+        <aside class="hero-card" aria-label="Resumen de servicios">
+          <h2>Áreas de apoyo</h2>
+          <ul class="check-list">
+            <li>Soporte TI y administración de infraestructura.</li>
+            <li>Desarrollo web y soluciones digitales.</li>
+            <li>Automatización y mejora de procesos.</li>
+            <li>Buenas prácticas de ciberseguridad.</li>
+            <li>Diagnóstico técnico y documentación.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-    <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Acerca de</h1>
-                <h1 class="position-absolute text-uppercase text-secondary">Acerca de</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="img/about.jpg" alt="">
-                </div>
-                <div class="col-lg-7">
-                    <h3 class="mb-4">¿Por qué un águila?</h3>
-                    <p>
-                        <ul>
-                       <li>La escalabilidad representada en lo alto de su vuelo para vivir en un ambiente de tranquilidad.</li>
-<li>Vive de un ambiente libre como lo es internet, pero siempre en alerta para responder ante la hostilidad.</li>
-<li>La vision privilegiada para detectar y visualizar amenazas y las situaciones de riezgo. </li>
-<li>Aprendizaje duro y continuo desde pequeños, para lograr una madurez y experiencia (como es requerido en la Ciberseguridad)</li>
-<li>Animal respetado en sus pares.</li>
-<li>Alza vuelo con seguridad: Vigilantes como el águila, protegiendo tus horizontes digitales.</li>
-<li>Volando alto en seguridad cibernética: Con la mirada vigilante del águila, protegiendo tu empresa en cada vuelo digital.</li>
-                        </ul>
-                    </p>
-                </div>
-            </div>
+    <section id="servicios">
+      <div class="container">
+        <div class="section-title">
+          <span>Servicios</span>
+          <h2>Apoyo tecnológico integral</h2>
+          <p>
+            Entregamos servicios prácticos, claros y ajustados a la realidad de cada organización,
+            priorizando seguridad, continuidad operativa y eficiencia.
+          </p>
         </div>
-    </div>
-    <!-- About End -->
 
-
-    <!-- Qualification Start -->
-    <div class="container-fluid py-5" id="qualification">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Experiencia</h1>
-                <h1 class="position-absolute text-uppercase text-secondary">Educación & Experiencia</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="mb-4">Educación</h3>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Ingeniería en Ciberseguridad</h5>
-                            <p class="mb-2"><strong>Universidad Andrés Bello</strong> | <small>2023 - 2024</small></p>
-                            <p>Actualmente nos encontramos en formación y aprendizaje.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Programación de Computadores</h5>
-                            <p class="mb-2"><strong>Universidad Técnica Federico Santa María</strong> | <small>1999 - 2003</small></p>
-                            <p>Uno de los nuestros es un experto en programación, con más de 15 años de experiencia en la programación</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Electrónica</h5>
-                            <p class="mb-2"><strong></strong> | <small>2000 - 2000</small></p>
-                            <p>Completar con más info</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-4">Experiencia</h3>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Web Master</h5>
-                            <p class="mb-2"><strong>Soft Company</strong> | <small>2000 - 2050</small></p>
-                            <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Web Designer</h5>
-                            <p class="mb-2"><strong>Soft Company</strong> | <small>2000 - 2050</small></p>
-                            <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Web Designer</h5>
-                            <p class="mb-2"><strong>Soft Company</strong> | <small>2000 - 2050</small></p>
-                            <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Qualification End -->
-
-    <!-- Services Start -->
-    <div class="container-fluid pt-5" id="service">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Servicios</h1>
-                <h1 class="position-absolute text-uppercase text-secondary">Nuestros Servicios</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Diseños Web</h4>
-                    </div>
-                    <p>Tenemos cierta experiencia en la construcción de sitios Web, de carga rápida y diseño minimalista.</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="https://fotosycaptura.cl" target="_blank">Ver</a>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Pentesting</h4>
-                    </div>
-                    <p>Actualmente nos encontramos en formación, puliendo cada una de las habilidades para este campo de la Ciberseguridad.</p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Diseño de App</h4>
-                    </div>
-                    <p>Nos encontramos en fase de desarrollo de nuestra app. Visítanos próximamente para ser el primero en probarla!</p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Consultorías</h4>
-                    </div>
-                    <p>Completar...</p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Recuperación de datos</h4>
-                    </div>
-                    <p>Poseemos cierta experiencia en la recuperación de datos y análisis forence. Si necesitas nuestra asesoría para ello, no dudes en consultar</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="https://fotosycaptura.cl/posts/2023-06-16-forenseando-un-disco-antiguo-parte-1.html" target="_blank">Leer más...</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Services End -->
-
-
-    <!-- Portfolio Start -->
-    <div class="container-fluid pt-5 pb-3" id="portfolio">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Galería</h1>
-                <h1 class="position-absolute text-uppercase text-secondary">Galería</h1>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center mb-2">
-                    Próximamente...
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio End -->
-
-
-
-    <!-- Contact Start -->
-    <div class="container-fluid py-5" id="contact">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contacto</h1>
-                <h1 class="position-absolute text-uppercase text-secondary">Contacto</h1>
-            </div>
-
-                <div class="row">
-                <div class="col-12 text-center mb-2">
-			Si bien, los formularios Web suelen ser cómodos, también son puntos de ataque constante.</br> 
-		5ax138cye [at] mozmail.com
-                </div>
-                </div>
-        </div>
-    </div>
-    <!-- Contact End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
-        <div class="container text-center py-5">
-            <div class="d-flex justify-content-center mb-4">
-                <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div class="d-flex justify-content-center mb-3">
-                <a class="text-white" href="#">Privacy</a>
-                <span class="px-3">|</span>
-                <a class="text-white" href="#">Terms</a>
-                <span class="px-3">|</span>
-                <a class="text-white" href="#">FAQs</a>
-                <span class="px-3">|</span>
-                <a class="text-white" href="#">Help</a>
-            </div>
-	    <p class="d-flex justify-content-center mb-3 text-muted">
-	    <a href="https://www.contadorvisitasgratis.com" title="contador de visitas"><img src="https://counter6.optistats.ovh/private/contadorvisitasgratis.php?c=upn5e4zgfjazax42p5d7xphda5n8nxwy" border="0" title="contador de visitas" alt="contador de visitas"></a>
-        </p>
-            <p class="m-0">&copy; <a class="text-white font-weight-bold" href="https://secpo.cl">secpo.cl</a>. Todos los derechos reservados.
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🛡️</div>
+            <h3>Ciberseguridad básica y preventiva</h3>
+            <p>
+              Revisión de riesgos, buenas prácticas, hardening inicial, recomendaciones de protección
+              y acompañamiento para reducir exposición frente a amenazas comunes.
             </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💻</div>
+            <h3>Soporte e infraestructura TI</h3>
+            <p>
+              Apoyo en redes, servidores, estaciones de trabajo, respaldos, servicios en la nube
+              y continuidad de plataformas críticas.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌐</div>
+            <h3>Desarrollo web y presencia digital</h3>
+            <p>
+              Creación de sitios web corporativos, páginas informativas, formularios, integración
+              de herramientas y mantenimiento técnico.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">⚙️</div>
+            <h3>Automatización de procesos</h3>
+            <p>
+              Scripts, flujos de trabajo, reportes, tratamiento de datos y soluciones simples para
+              disminuir tareas manuales repetitivas.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">📄</div>
+            <h3>Documentación y diagnóstico</h3>
+            <p>
+              Levantamiento técnico, inventarios, documentación de procesos, matrices de riesgo
+              y recomendaciones de mejora tecnológica.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🤝</div>
+            <h3>Asesoría tecnológica</h3>
+            <p>
+              Orientación para elegir herramientas, ordenar prioridades, planificar mejoras y tomar
+              decisiones técnicas con mirada estratégica.
+            </p>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="about" id="nosotros">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">Quiénes somos</span>
+          <h2>Una empresa tecnológica en formación, creada para resolver problemas reales.</h2>
+          <p>
+            Nacemos desde la experiencia práctica en tecnología, desarrollo de software, soporte TI
+            y seguridad de la información. Nuestro enfoque combina criterio técnico, responsabilidad
+            y comunicación clara.
+          </p>
+          <p>
+            Trabajamos con una mirada cercana: antes de proponer una solución, buscamos entender el
+            contexto, los recursos disponibles y el impacto real que tendrá cada mejora.
+          </p>
+        </div>
+
+        <div class="values">
+          <div class="value">
+            <strong>Seguridad desde el diseño</strong>
+            <span>Promovemos soluciones que consideren protección, respaldo y continuidad desde el inicio.</span>
+          </div>
+          <div class="value">
+            <strong>Claridad técnica</strong>
+            <span>Traducimos conceptos complejos en decisiones comprensibles para el negocio.</span>
+          </div>
+          <div class="value">
+            <strong>Soluciones realistas</strong>
+            <span>Priorizamos mejoras viables, sostenibles y acordes al tamaño de cada organización.</span>
+          </div>
+          <div class="value">
+            <strong>Confianza y responsabilidad</strong>
+            <span>Actuamos con reserva, ética profesional y respeto por la información de nuestros clientes.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="metodo">
+      <div class="container">
+        <div class="section-title">
+          <span>Método de trabajo</span>
+          <h2>De la necesidad a la solución</h2>
+          <p>
+            Usamos un proceso simple y ordenado para entender, priorizar, ejecutar y acompañar cada servicio.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <h3>Diagnóstico</h3>
+            <p>Revisamos la necesidad, el entorno y los principales riesgos o brechas existentes.</p>
+          </article>
+          <article class="step">
+            <h3>Propuesta</h3>
+            <p>Definimos alcance, prioridades, entregables y una ruta de trabajo clara.</p>
+          </article>
+          <article class="step">
+            <h3>Ejecución</h3>
+            <p>Implementamos la solución con seguimiento, comunicación y control técnico.</p>
+          </article>
+          <article class="step">
+            <h3>Acompañamiento</h3>
+            <p>Entregamos recomendaciones, documentación y soporte posterior según el servicio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Próximamente...</h2>
+        <p><a name="contacto"></a>
+          Podemos ayudarte a ordenar, proteger y mejorar tus procesos tecnológicos con soluciones
+          ajustadas a tu realidad.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Secpo SpA. Todos los derechos reservados.
     </div>
-    <!-- Footer End -->
-
-    <!-- Scroll to Bottom -->
-    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <!-- Logo flotante -->
-    <div class="floating-dev">
-        <img src="img/in-dev.png" alt="Sitio en construcción" />
-    </div>
+  </footer>
 </body>
-
 </html>
